@@ -3,10 +3,18 @@ var searchBtnEl = document.getElementById("searchBtn");
 var mainDisplayEl = document.getElementById("primary-card");
 var fivedayDisplayEl = document.getElementById("5-day-card");
 var searchData = [];
+var previousSearch = []; 
 
 searchBtnEl.addEventListener("click", userCity);
 
 
+function init(){
+    var storedSearches = JSON.parse(localStorage.getItem("cityKey"));
+    if (storedSearches !== null) {
+        storedSearches = previousSearch
+    }
+    displayPreviousSearch()
+}
 
 function userCity (event) {
     event.preventDefault();
@@ -15,8 +23,20 @@ function userCity (event) {
         alert ("No Name entered to Search");
         return;
     }
+    previousSearch.push(cityName);
+    searchInputEl.value= "";
+    getAPIdata(cityName);
+    addSearch();
+    displayPreviousSearch();
+}
 
-    getAPIdata(cityName)
+function addSearch(){
+localStorage.setItem("cityKey", JSON.stringify(previousSearch))
+}
+
+function displayPreviousSearch(){
+
+
 }
 
 function getAPIdata(cityName) {
@@ -37,3 +57,16 @@ function getAPIdata(cityName) {
 
         })
     }
+ function displayData(data) {
+    mainDisplayEl.innerHTML= "";
+    var cityCurrentinfo = data;
+
+    // needd cuurent date,icon of current weather, temp, humid,wind speed
+    var newH2 = document.createElement("h2");
+    var newImg = document.createElement("img");
+    var newPtag = document.createElement("p")
+
+
+
+    // future dates needs same as curremt day
+ }
