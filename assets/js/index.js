@@ -66,7 +66,7 @@ function getAPIdata(cityName) {
     mainDisplayEl.innerHTML= "";
     var cityCurrentinfo = data;
     var cityOGdate = data.dt
-    var cityCurrentDate = moment.unix(cityOGdate).format("dddd, MMMM Do YYYY, h:mm:ss a")
+    var cityCurrentDate = moment.unix(cityOGdate).format("dddd, MMMM Do YYYY, h a")
     var thumbnailIcon = data.weather[0].icon
 
 
@@ -81,7 +81,7 @@ function getAPIdata(cityName) {
     var cityWindSpeed = newPtag;
     var cityHumidity = newPtag;
 
-    cityMain.textContent = cityCurrentinfo.name + cityCurrentDate;
+    cityMain.textContent = cityCurrentinfo.name + " " + cityCurrentDate;
     cityIcon.setAttribute("src", "")
     cityTemp.textContent = "The Current Temprature is " + cityCurrentinfo.main.temp + "Fahrenheit";
     cityHumidity.textContent = "The Current Humidity is " + cityCurrentinfo.main.cityHumidity + "%";
