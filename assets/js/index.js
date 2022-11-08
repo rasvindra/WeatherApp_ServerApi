@@ -71,20 +71,16 @@ function getAPIdata(cityName) {
 
 
     // need current date,icon of current weather, temp, humid,wind speed
-    var newH2 = document.createElement("h2");
-    var newImg = document.createElement("img");
-    var newPtag = document.createElement("p");
-
-    var cityMain = newH2;
-    var cityIcon = newImg;
-    var cityTemp = newPtag;
-    var cityWindSpeed = newPtag;
-    var cityHumidity = newPtag;
+    var cityMain = document.createElement("h2");;
+    var cityIcon = document.createElement("img");
+    var cityTemp = document.createElement("p");
+    var cityWindSpeed = document.createElement("p");
+    var cityHumidity = document.createElement("p");
 
     cityMain.textContent = cityCurrentinfo.name + " " + cityCurrentDate;
     cityIcon.setAttribute("src", "")
-    cityTemp.textContent = "The Current Temprature is " + cityCurrentinfo.main.temp + "Fahrenheit";
-    cityHumidity.textContent = "The Current Humidity is " + cityCurrentinfo.main.cityHumidity + "%";
+    cityTemp.textContent = "The Current Temprature is " + cityCurrentinfo.main.temp + " Fahrenheit";
+    cityHumidity.textContent = "The Current Humidity is " + cityCurrentinfo.main.humidity + "%";
     cityWindSpeed.textContent = "The Current Wind Speed is " + cityCurrentinfo.wind.speed + "MPH";
     
     mainDisplayEl.append(cityMain);
