@@ -82,8 +82,17 @@ function getAPIdata(cityName) {
     var cityHumidity = newPtag;
 
     cityMain.textContent = cityCurrentinfo.name + cityCurrentDate;
-    cityIcon
-
+    // cityIcon.setAttribute("src", "")
+    cityTemp.textContent = "The Current Temprature is " + cityCurrentinfo.main.temp + "Fahrenheit";
+    cityHumidity.textContent = "The Current Humidity is " + cityCurrentinfo.main.cityHumidity + "%";
+    cityWindSpeed.textContent = "The Current Wind Speed is " + cityCurrentinfo.wind.speed + "MPH";
+    
+    mainDisplayEl.append(cityMain);
+    mainDisplayEl.append(cityTemp);
+    mainDisplayEl.append(cityWindSpeed);
+    mainDisplayEl.append(cityHumidity);
+    mainDisplayEl.append(cityIcon);
+    
 
     // future dates needs same as curremt day
  }
