@@ -2,6 +2,7 @@ var searchInputEl = document.getElementById("userInput");
 var searchBtnEl = document.getElementById("searchBtn");
 var mainDisplayEl = document.getElementById("primary-card");
 var fivedayDisplayEl = document.getElementById("5-day-card");
+var userHistoryEl = document.getElementById("searchList")
 var searchData = [];
 var previousSearch = []; 
 
@@ -35,8 +36,12 @@ localStorage.setItem("cityKey", JSON.stringify(previousSearch))
 }
 
 function displayPreviousSearch(){
-
-
+userHistoryEl.innerHTML = "";
+for (let i = 0; i < previousSearch.length; i++){
+    var newli =document.createElement("li");
+    newli.textContent = previousSearch[i];
+    userHistoryEl.append(newli);
+    }
 }
 
 function getAPIdata(cityName) {
@@ -46,26 +51,38 @@ function getAPIdata(cityName) {
     fetch(queryURL)
         .then(function(response) {
             if(!response.ok) {
-                console.log("error","tessssttttttttt 1111111111111111111")
+                console.log("error","tessssttttttttt NOT WORKING!!!")
             } else {
                 return response.json();
             }
         })
         .then(function(data){
-            console.log(data, "teeeeessssssssssttt 22222222222222222222")
+            console.log(data, "teeeeessssssssssttt IT WORKS!!!!!")
             displayData(data)
 
         })
     }
  function displayData(data) {
-    mainDisplayEl.innerHTML= "";
+    // mainDisplayEl.innerHTML= "";
     var cityCurrentinfo = data;
+    var cityOGdate = data.dt
+    var cityCurrentDate = moment.unix(cityOGdate).format("dddd, MMMM Do YYYY, h:mm:ss a")
+    var thumbnailIcon = data.weather[0].icon
 
-    // needd cuurent date,icon of current weather, temp, humid,wind speed
+
+    // needd current date,icon of current weather, temp, humid,wind speed
     var newH2 = document.createElement("h2");
     var newImg = document.createElement("img");
-    var newPtag = document.createElement("p")
+    var newPtag = document.createElement("p");
 
+    var cityMain = newH2;
+    var cityIcon = newImg;
+    var cityTemp = newPtag;
+    var cityWindSpeed = newPtag;
+    var cityHumidity = newPtag;
+
+    cityMain.textContent = cityCurrentinfo.name + cityCurrentDate;
+    cityIcon
 
 
     // future dates needs same as curremt day
