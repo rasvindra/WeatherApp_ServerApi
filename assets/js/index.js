@@ -63,14 +63,14 @@ function getAPIdata(cityName) {
         })
     }
  function displayData(data) {
-    // mainDisplayEl.innerHTML= "";
+    mainDisplayEl.innerHTML= "";
     var cityCurrentinfo = data;
     var cityOGdate = data.dt
     var cityCurrentDate = moment.unix(cityOGdate).format("dddd, MMMM Do YYYY, h:mm:ss a")
     var thumbnailIcon = data.weather[0].icon
 
 
-    // needd current date,icon of current weather, temp, humid,wind speed
+    // need current date,icon of current weather, temp, humid,wind speed
     var newH2 = document.createElement("h2");
     var newImg = document.createElement("img");
     var newPtag = document.createElement("p");
@@ -82,7 +82,7 @@ function getAPIdata(cityName) {
     var cityHumidity = newPtag;
 
     cityMain.textContent = cityCurrentinfo.name + cityCurrentDate;
-    // cityIcon.setAttribute("src", "")
+    cityIcon.setAttribute("src", "")
     cityTemp.textContent = "The Current Temprature is " + cityCurrentinfo.main.temp + "Fahrenheit";
     cityHumidity.textContent = "The Current Humidity is " + cityCurrentinfo.main.cityHumidity + "%";
     cityWindSpeed.textContent = "The Current Wind Speed is " + cityCurrentinfo.wind.speed + "MPH";
