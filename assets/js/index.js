@@ -57,17 +57,19 @@ function getAPIdata(cityName) {
             }
         })
         .then(function(data){
-            console.log(data, "teeeeessssssssssttt IT WORKS!!!!!")
-            displayData(data)
-
+            console.log(data, "teeeeessssssssssttt IT WORKS!!!!!");
+            displayData(data);
+            getDailydata(data);
         })
     }
+
  function displayData(data) {
     mainDisplayEl.innerHTML= "";
     var cityCurrentinfo = data;
     var cityOGdate = data.dt
     var cityCurrentDate = moment.unix(cityOGdate).format("dddd, MMMM Do YYYY, h a")
     var thumbnailIcon = data.weather[0].icon
+    console.log(thumbnailIcon)
 
 
     // need current date,icon of current weather, temp, humid,wind speed
@@ -78,17 +80,50 @@ function getAPIdata(cityName) {
     var cityHumidity = document.createElement("p");
 
     cityMain.textContent = cityCurrentinfo.name + " " + cityCurrentDate;
-    cityIcon.setAttribute("src", "")
+    cityIcon.setAttribute("src", 'https://openweathermap.org/img/wn/'+thumbnailIcon+'@2x.png')
     cityTemp.textContent = "The Current Temprature is " + cityCurrentinfo.main.temp + " Fahrenheit";
     cityHumidity.textContent = "The Current Humidity is " + cityCurrentinfo.main.humidity + "%";
     cityWindSpeed.textContent = "The Current Wind Speed is " + cityCurrentinfo.wind.speed + "MPH";
     
     mainDisplayEl.append(cityMain);
+    mainDisplayEl.append(cityIcon);
     mainDisplayEl.append(cityTemp);
     mainDisplayEl.append(cityWindSpeed);
     mainDisplayEl.append(cityHumidity);
-    mainDisplayEl.append(cityIcon);
-    
-
-    // future dates needs same as curremt day
+ 
  }
+
+ function getDailydata(data) {
+    var APIKey = "5106b1dd029f01436cf1eff2fabc4fcf";
+    var lat = data.coord.lat;
+    var lon = data.coord.lon;
+    console.log(lat, lon)
+
+    queryURL ="https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
+
+    fetch(queryURL)
+        .then(function(response) {
+            if(!response.ok) {
+                console.log("error","NOT WORKING!!!")
+            } else {
+                return response.json();
+            }
+        })
+        .then(function(data){
+            console.log(data, "teeeeessssssssssttt2222222222")
+            future5day(data)
+        })
+
+        
+}
+function future5day(data){
+// fivedayDisplayEl.innerHTML=""
+var nextDay = data
+console.log(nextDay)
+// for (let i = 0; i < 40; i+4){
+// console.log(nextDay[i])
+
+// }
+
+
+}
