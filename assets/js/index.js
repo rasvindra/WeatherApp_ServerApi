@@ -61,9 +61,9 @@ function getAPIdata(cityName) {
             displayData(data);
             getDailydata(data);
         })
-    }
+}
 
- function displayData(data) {
+function displayData(data) {
     mainDisplayEl.innerHTML= "";
     var cityCurrentinfo = data;
     var cityOGdate = data.dt
@@ -91,7 +91,7 @@ function getAPIdata(cityName) {
     mainDisplayEl.append(cityWindSpeed);
     mainDisplayEl.append(cityHumidity);
  
- }
+}
 
  function getDailydata(data) {
     var APIKey = "5106b1dd029f01436cf1eff2fabc4fcf";
@@ -112,18 +112,39 @@ function getAPIdata(cityName) {
         .then(function(data){
             console.log(data, "teeeeessssssssssttt2222222222")
             future5day(data)
-        })
-
-        
+        })      
 }
+
+
 function future5day(data){
 // fivedayDisplayEl.innerHTML=""
-var nextDay = data
+var nextDay = data.list
+
 console.log(nextDay)
-// for (let i = 0; i < 40; i+4){
-// console.log(nextDay[i])
+for (let i = 0; i < 40; i++) {
+var dailyDateOG = nextDay[i].dt
+var dailyDateFormat = moment.unix(dailyDateOG).format("dddd, MMMM Do YYYY, h a")
+var dailyIcon = nextDay[i].weather[0].icon
+var dailyTemp = nextDay[i].main.temp
+var dailyHumidity = nextDay[i].main.humidity
+var dailyWind = nextDay[i].wind.speed
 
-// }
+var cityDate = document.createElement("h3")
+var cityIcon = document.createElement("img");
+var cityTemp = document.createElement("p");
+var cityWindSpeed = document.createElement("p");
+var cityHumidity = document.createElement("p");
 
+cityDate.textContent = "Date: " + dailyDateFormat;
+cityIcon.setAttribute("src", 'https://openweathermap.org/img/wn/'+dailyIcon+'@2x.png');
+cityTemp.textContent = "The Temperature will be " + dailyTemp + " Kelvin";
+cityHumidity.textContent = "The Humidity will be " + dailyHumidity + "%";
+cityWindSpeed.textContent = "The Wind Speed will be " + dailyWind + "MPH";
 
+fivedayDisplayEl.append(cityDate);
+fivedayDisplayEl.append(cityIcon);
+fivedayDisplayEl.append(cityTemp);
+fivedayDisplayEl.append(cityWindSpeed);
+fivedayDisplayEl.append(cityHumidity);
+}
 }
