@@ -1,0 +1,10 @@
+.displayArea {
+    display:flex;
+    flex: wrap;
+    background-color: rgb(200, 172, 226);
+}
+
+#day5-card div{
+background-color: rgb(113, 166, 239);
+border-style: solid;
+}

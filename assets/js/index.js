@@ -1,7 +1,7 @@
 var searchInputEl = document.getElementById("userInput");
 var searchBtnEl = document.getElementById("searchBtn");
 var mainDisplayEl = document.getElementById("primary-card");
-var fivedayDisplayEl = document.getElementById("5-day-card");
+var fivedayDisplayEl = document.getElementById("day5-card");
 var userHistoryEl = document.getElementById("searchList")
 var searchData = [];
 var previousSearch = []; 
@@ -121,7 +121,7 @@ function future5day(data){
 var nextDay = data.list
 
 console.log(nextDay)
-for (let i = 0; i < 40; i+8) {
+for (let i = 0; i < 40; i+=8) {
 var dailyDateOG = nextDay[i].dt
 var dailyDateFormat = moment.unix(dailyDateOG).format("dddd, MMMM Do YYYY, h a")
 var dailyIcon = nextDay[i].weather[0].icon
