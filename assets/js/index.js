@@ -121,7 +121,7 @@ function future5day(data){
 var nextDay = data.list
 
 console.log(nextDay)
-for (let i = 0; i < 40; i++) {
+for (let i = 0; i < 40; i+8) {
 var dailyDateOG = nextDay[i].dt
 var dailyDateFormat = moment.unix(dailyDateOG).format("dddd, MMMM Do YYYY, h a")
 var dailyIcon = nextDay[i].weather[0].icon
@@ -129,7 +129,8 @@ var dailyTemp = nextDay[i].main.temp
 var dailyHumidity = nextDay[i].main.humidity
 var dailyWind = nextDay[i].wind.speed
 
-var cityDate = document.createElement("h3")
+var dailynewDiv = document.createElement("div")
+var cityDate = document.createElement("h4")
 var cityIcon = document.createElement("img");
 var cityTemp = document.createElement("p");
 var cityWindSpeed = document.createElement("p");
@@ -141,10 +142,11 @@ cityTemp.textContent = "The Temperature will be " + dailyTemp + " Kelvin";
 cityHumidity.textContent = "The Humidity will be " + dailyHumidity + "%";
 cityWindSpeed.textContent = "The Wind Speed will be " + dailyWind + "MPH";
 
-fivedayDisplayEl.append(cityDate);
-fivedayDisplayEl.append(cityIcon);
-fivedayDisplayEl.append(cityTemp);
-fivedayDisplayEl.append(cityWindSpeed);
-fivedayDisplayEl.append(cityHumidity);
+fivedayDisplayEl.append(dailynewDiv);
+dailynewDiv.append(cityDate);
+dailynewDiv.append(cityIcon);
+dailynewDiv.append(cityTemp);
+dailynewDiv.append(cityWindSpeed);
+dailynewDiv.append(cityHumidity);
 }
 }
