@@ -1,10 +1,20 @@
 .displayArea {
-    display:flex;
-    flex: wrap;
-    background-color: rgb(200, 172, 226);
+display:flex;
+height: fit-content;
+padding: 10px;
+}
+
+#primary-card div {
+background-color: rgb(200, 172, 226);
+border: 5px solid black;
+}
+
+#day5-card {
+display: flex;
 }
 
 #day5-card div{
 background-color: rgb(113, 166, 239);
-border-style: solid;
+border: 5px solid black;
+width: 70%;
 }

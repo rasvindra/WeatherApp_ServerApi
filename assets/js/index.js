@@ -73,6 +73,7 @@ function displayData(data) {
 
 
     // need current date,icon of current weather, temp, humid,wind speed
+    var cityNewDiv = document.createElement("div")
     var cityMain = document.createElement("h2");;
     var cityIcon = document.createElement("img");
     var cityTemp = document.createElement("p");
@@ -85,11 +86,13 @@ function displayData(data) {
     cityHumidity.textContent = "The Current Humidity is " + cityCurrentinfo.main.humidity + "%";
     cityWindSpeed.textContent = "The Current Wind Speed is " + cityCurrentinfo.wind.speed + "MPH";
     
-    mainDisplayEl.append(cityMain);
-    mainDisplayEl.append(cityIcon);
-    mainDisplayEl.append(cityTemp);
-    mainDisplayEl.append(cityWindSpeed);
-    mainDisplayEl.append(cityHumidity);
+    mainDisplayEl.append(cityNewDiv)
+    cityNewDiv.append(cityMain);
+    cityNewDiv.append(cityMain);
+    cityNewDiv.append(cityIcon);
+    cityNewDiv.append(cityTemp);
+    cityNewDiv.append(cityWindSpeed);
+    cityNewDiv.append(cityHumidity);
  
 }
 
