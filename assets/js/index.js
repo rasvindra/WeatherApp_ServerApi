@@ -12,7 +12,7 @@ searchBtnEl.addEventListener("click", userCity);
 function init(){
     var storedSearches = JSON.parse(localStorage.getItem("cityKey"));
     if (storedSearches !== null) {
-        storedSearches = previousSearch
+        previousSearch = storedSearches
     }
     displayPreviousSearch()
 }
@@ -120,7 +120,7 @@ function displayData(data) {
 
 
 function future5day(data){
-// fivedayDisplayEl.innerHTML=""
+fivedayDisplayEl.innerHTML=""
 var nextDay = data.list
 
 console.log(nextDay)
@@ -151,5 +151,9 @@ dailynewDiv.append(cityIcon);
 dailynewDiv.append(cityTemp);
 dailynewDiv.append(cityWindSpeed);
 dailynewDiv.append(cityHumidity);
+
 }
+
 }
+
+init()
