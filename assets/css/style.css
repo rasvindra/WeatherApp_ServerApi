@@ -1,3 +1,19 @@
+button {
+font-weight:500;
+background-color: #d0aaea;
+}
+
+.citySearch {
+border: #ffffff;
+box-shadow: #000000 0 2px 5px 2px;
+border-style: outset;
+font-weight: bolder;
+}
+
+.searchHx {
+text-align: center;
+}
+
 .displayArea {
 display:flex;
 height: fit-content;
@@ -10,7 +26,7 @@ border: 5px solid black;
 }
 
 #day5-card {
-display: flex;
+display: flex
 }
 
 #day5-card div{

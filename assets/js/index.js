@@ -38,9 +38,9 @@ localStorage.setItem("cityKey", JSON.stringify(previousSearch))
 function displayPreviousSearch(){
 userHistoryEl.innerHTML = "";
 for (let i = 0; i < previousSearch.length; i++){
-    var newli =document.createElement("li");
-    newli.textContent = previousSearch[i];
-    userHistoryEl.append(newli);
+    var newButton =document.createElement("button");
+    newButton.textContent = previousSearch[i];
+    userHistoryEl.append(newButton);
     }
 }
 
@@ -155,5 +155,6 @@ dailynewDiv.append(cityHumidity);
 }
 
 }
+
 
 init()
